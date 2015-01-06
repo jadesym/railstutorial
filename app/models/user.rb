@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # sets the e-mail to lower case
-  before_save { |user| user.email = email.downcase }
+  before_save { email.downcase! }
   # makes sure the name is not blank and is not over 50 characters
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
